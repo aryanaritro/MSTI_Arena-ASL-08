@@ -2,9 +2,8 @@
 
 A modern, responsive e-commerce storefront built with React and Vite. WAQT provides a clean shopping interface with dynamic product loading, product search, category filtering, and an interactive shopping cart.
 
-**Project:** ASL National Arena — Challenge #08  
-**Category:** Web Development & E-Commerce  
-**Status:** Frontend implemented | Backend integration in progress
+**Category:** Web Development & E-Commerce<br> 
+**SiteURL:** [Visit the site](https://waqt-watch.vercel.app/)
 
 ---
 
