@@ -10,6 +10,13 @@ import { addToCart, cartCount, cartTotal, filterProducts, updateQuantity } from 
 import './styles.css';
 
 function App() {
+  const [theme, setTheme] = useState(() => {
+    try {
+      const saved = localStorage.getItem('waqt-theme');
+      if (saved === 'light' || saved === 'dark') return saved;
+    } catch {}
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  });
   const [products, setProducts] = useState([]);
   const [source, setSource] = useState('api');
   const [loading, setLoading] = useState(true);
@@ -17,6 +24,12 @@ function App() {
   const [activeCategory, setActiveCategory] = useState('All watches');
   const [cart, setCart] = useState([]);
   const [cartOpen, setCartOpen] = useState(false);
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    try { localStorage.setItem('waqt-theme', theme); } catch {}
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#030824' : '#f7f6f2');
+  }, [theme]);
 
   useEffect(() => {
     let alive = true;
@@ -47,7 +60,7 @@ function App() {
   }
 
   return <>
-    <Navbar count={cartCount(cart)} onCartClick={() => setCartOpen(true)} query={query} onQueryChange={setQuery} />
+    <Navbar count={cartCount(cart)} onCartClick={() => setCartOpen(true)} query={query} onQueryChange={setQuery} theme={theme} onThemeToggle={() => setTheme((current) => current === 'dark' ? 'light' : 'dark')} />
     <main><Hero /><div className="assurance-strip"><div><span>01</span>Thoughtfully selected</div><i /><div><span>02</span>Made for the long run</div><i /><div><span>03</span>Always personal</div></div>
       <Collection products={visibleProducts} categories={categories} activeCategory={activeCategory} onCategoryChange={setActiveCategory} onAdd={addItem} loading={loading} source={source} />
       <section className="story-band" id="story"><div className="story-inner"><p className="eyebrow">A little more about WAQT</p><h2>Time is the one thing<br/>we all <em>share.</em></h2><p>We believe the best things aren’t rushed. Each watch in our collection has a story, a purpose, and a place in yours.</p><a className="text-link" href="mailto:hello@waqt.example">Get to know us <span>→</span></a></div><div className="story-image" role="img" aria-label="A watchmaker carefully assembling a timepiece" /></section>

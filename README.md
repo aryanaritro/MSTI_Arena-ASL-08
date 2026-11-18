@@ -5,13 +5,13 @@ A modern, responsive e-commerce storefront built with React and Vite. WAQT provi
 **Category:** Web Development & E-Commerce<br> 
 **SiteURL:** [Visit the site](https://waqt-watch.vercel.app/)
 
----
-
 ## Overview
 
-WAQT is an e-commerce web application designed to provide customers with a simple and convenient online shopping experience.
+WAQT is a branded watch storefront designed to provide customers with a simple and convenient way to browse timepieces.y
 
-The project focuses on a responsive storefront where users can explore products, search by name, filter by category, and manage items in a shopping cart.
+![overview](public/site.png)
+
+The project focuses on a responsive watch storefront where users can explore branded watches, search by name, filter by watch style, and manage items in a shopping cart.
 
 The frontend retrieves product information from a public mock API and provides local sample products as a fallback when the API is unavailable.
 
@@ -127,13 +127,13 @@ Open the local URL displayed in the terminal to access WAQT.
 
 ## Product Data Source
 
-WAQT currently uses the Fake Store API:
+WAQT currently checks the Fake Store API:
 
 `https://fakestoreapi.com/products`
 
-If the external API cannot provide product data, the application uses locally defined sample products.
+Only products identified as watches are displayed from the API. Fake Store API currently contains general merchandise rather than a watch catalog, so its clothing, jewelry, electronics, and accessories are excluded. When the API has no watch products (or is unavailable), the site displays a local branded watch collection instead.
 
-The product service is kept separate from the interface to make future integration with the project's own backend easier.
+The product service is kept separate from the interface to make future integration with the project's own watch catalog easier.
 
 ---
 

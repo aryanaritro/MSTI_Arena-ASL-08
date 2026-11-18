@@ -26,12 +26,20 @@ test('cart adds, increments, updates, removes, and totals correctly', () => {
   assert.deepEqual(cart.map((item) => item.id), [2]);
 });
 
-test('product service normalizes Fake Store data and falls back when unavailable', async () => {
-  const apiResult = await fetchProducts(async () => ({ ok: true, json: async () => [{ id: 12, title: 'Sample watch', category: "men's clothing", price: '29.95', image: 'watch.jpg' }] }));
+test('product service keeps watch inventory and excludes clothes and watch accessories', async () => {
+  const apiResult = await fetchProducts(async () => ({ ok: true, json: async () => [
+    { id: 12, title: 'Sample watch', category: 'watches', price: '29.95', image: 'watch.jpg' },
+    { id: 13, title: 'Cotton shirt', category: "men's clothing", price: '19.95', image: 'shirt.jpg' },
+    { id: 14, title: 'Leather watch strap', category: 'accessories', price: '9.95', image: 'strap.jpg' }
+  ] }));
   assert.equal(apiResult.source, 'api');
-  assert.deepEqual(apiResult.products[0], { id: 12, title: 'Sample watch', category: 'Sport', price: 29.95, image: 'watch.jpg', description: '' });
+  assert.equal(apiResult.products.length, 1);
+  assert.deepEqual(apiResult.products[0], { id: 12, title: 'Sample watch', category: 'Classic', price: 29.95, image: 'watch.jpg', description: '' });
+  const irrelevantCatalog = await fetchProducts(async () => ({ ok: true, json: async () => [{ id: 13, title: 'Cotton shirt', category: "men's clothing", price: 19.95, image: 'shirt.jpg' }] }));
+  assert.equal(irrelevantCatalog.source, 'sample');
+  assert.ok(irrelevantCatalog.products.every((product) => /tissot|seiko|citizen|casio|orient|hamilton|rado|tag heuer/i.test(product.title)));
   const fallback = await fetchProducts(async () => { throw new Error('offline'); });
   assert.equal(fallback.source, 'sample');
   assert.ok(fallback.products.length >= 4);
-  assert.equal(normalizeProducts([{ id: 1, title: 'A', category: 'electronics', price: 1, image: '' }])[0].category, 'Classic');
+  assert.equal(normalizeProducts([{ id: 1, title: 'A portable device', category: 'electronics', price: 1, image: '' }]).length, 0);
 });
