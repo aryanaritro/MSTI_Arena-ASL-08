@@ -1,0 +1,10 @@
+export const sampleProducts = [
+  { id: 'sample-1', title: 'The Heritage Automatic', category: 'Classic', price: 289, image: 'https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=900&q=85', description: 'A considered classic with a brushed steel case and deep midnight dial.' },
+  { id: 'sample-2', title: 'The Meridian Chronograph', category: 'Chronograph', price: 365, image: 'https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=900&q=85', description: 'Precision timing, balanced proportions, and a warm leather strap.' },
+  { id: 'sample-3', title: 'The Field Standard', category: 'Sport', price: 195, image: 'https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=900&q=85', description: 'An everyday companion made for the long way around.' },
+  { id: 'sample-4', title: 'The Atelier Moonphase', category: 'Dress', price: 425, image: 'https://images.unsplash.com/photo-1547996160-81dfa63595aa?auto=format&fit=crop&w=900&q=85', description: 'Quiet detail and a refined silhouette for after hours.' },
+  { id: 'sample-5', title: 'The Coastline Diver', category: 'Sport', price: 319, image: 'https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?auto=format&fit=crop&w=900&q=85', description: 'A robust steel watch with a clean, legible face.' },
+  { id: 'sample-6', title: 'The Sunday Small Seconds', category: 'Classic', price: 245, image: 'https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?auto=format&fit=crop&w=900&q=85', description: 'A familiar shape, thoughtfully reduced to the essentials.' },
+  { id: 'sample-7', title: 'The Archive 1968', category: 'Dress', price: 390, image: 'https://images.unsplash.com/photo-1533139502658-0198f920d8e8?auto=format&fit=crop&w=900&q=85', description: 'Vintage inspiration, finished for the present day.' },
+  { id: 'sample-8', title: 'The Transit GMT', category: 'Chronograph', price: 345, image: 'https://images.unsplash.com/photo-1434056886845-dac89ffe9b56?auto=format&fit=crop&w=900&q=85', description: 'A practical second time zone with a confident profile.' }
+];
