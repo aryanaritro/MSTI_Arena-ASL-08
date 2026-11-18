@@ -1,7 +1,6 @@
-# WAQT — Mr. Karim’s E-Commerce Hub
+# MSTIA Challenge 08 — WAQT (Mr. Karim’s E-Commerce Hub)
 
-A modern, responsive e-commerce storefront built with React and Vite. WAQT provides a clean shopping interface with dynamic product loading, product search, category filtering, and an interactive shopping cart.
-
+A modern, responsive e-commerce storefront built with React and Vite. WAQT provides a clean shopping interface with dynamic product loading, product search, category filtering, and an interactive shopping cart.<br>
 **Category:** Web Development & E-Commerce<br> 
 **SiteURL:** [Visit the site](https://waqt-watch.vercel.app/)
 
